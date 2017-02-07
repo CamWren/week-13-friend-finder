@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+   <head>
+      <meta charset="UTF-8">
+      <title>FriendFinder</title>
+      <!-- Latest compiled and minified CSS & JS -->
+      <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" integrity="sha384-1q8mTJOASx8j1Au+a5WDVnPi2lkFfwwEAa8hDDdjZlpLegxhjVME1fgjWPGmkzs7" crossorigin="anonymous">
+      <script src="https://code.jquery.com/jquery.js"></script>
+      <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js" integrity="sha384-0mSbJDEHialfmuBBQP6A4Qrprq5OVfW37PRR3j5ELqxss1yVqOtnepnHVP9aJ7xS" crossorigin="anonymous"></script>
+      <!-- Font Awesome Glyphicons -->
+      <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.6.1/css/font-awesome.min.css">
+      <link rel="stylesheet" id="coToolbarStyle" href="chrome-extension://cjabmdjcfcfdmffimndhafhblfmpjdpe/toolbar/styles/placeholder.css" type="text/css">
+      <script type="text/javascript" id="cosymantecbfw_removeToolbar">(function() {
+             var toolbarElement = {},
+                 parent = {},
+                 interval = 0,
+                 retryCount = 0,
+                 isRemoved = false;
+             if (window.location.protocol === 'file:') {
+                 interval = window.setInterval(function() {
+                     toolbarElement = document.getElementById('coFrameDiv');
+                     if (toolbarElement) {
+                         parent = toolbarElement.parentNode;
+                         if (parent) {
+                             parent.removeChild(toolbarElement);
+                             isRemoved = true;
+                             if (document.body && document.body.style) {
+                                 document.body.style.setProperty('margin-top', '0px', 'important');
+                             }
+                         }
+                     }
+                     retryCount += 1;
+                     if (retryCount > 10 || isRemoved) {
+                         window.clearInterval(interval);
+                     }
+                 }, 10);
+             }
+         })();
+      </script>
+   </head>
+   <body>
+      <div class="container">
+         <div class="jumbotron">
+            <h1 class=""><i class="fa fa-facebook-square" aria-hidden="true"></i> Friend Finder</h1>
+            <hr>
+            <h2 class="">Answer a few basic questions. </h2>
+            <h2 class="">Then find the friend with the greatest compatibility!</h2>
+            <br>
+            <div class="">
+               <a href="/survey">
+                  <button type="button" class="btn btn-lg btn-primary">
+                     <h4><span class="glyphicon glyphicon-list-alt"></span> Go to Survey</h4>
+                  </button>
+               </a>
+            </div>
+         </div>
+         <footer class="footer">
+            <div class="container">
+               <p><a href="/api/friends">API Friends List</a> | <a href="https://github.com/afhaque/friendfinder">GitHub Repo</a></p>
+            </div>
+         </footer>
+      </div>
+      <div id="window-resizer-tooltip" style="display: none;"><a href="#" title="Edit settings"></a><span class="tooltipTitle">Window size: </span><span class="tooltipWidth" id="winWidth">1282</span> x <span class="tooltipHeight" id="winHeight">692</span><br><span class="tooltipTitle">Viewport size: </span><span class="tooltipWidth" id="vpWidth">1266</span> x <span class="tooltipHeight" id="vpHeight">150</span></div>
+   </body>
+   <div id="coFrameDiv" style="height:0px;display:none;"><iframe id="coToolbarFrame" src="chrome-extension://cjabmdjcfcfdmffimndhafhblfmpjdpe/toolbar/placeholder.html" style="height:0px;width:100%;display:none;"></iframe></div>
+</html>
