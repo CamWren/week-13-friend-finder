@@ -1,14 +1,19 @@
-app.get("../data/friends", function(req, res) {
-  res.sendFile(path.join(__dirname, "friends.js"));
-});
+var friendsData = require('../data/friends.js');
 
-app.post("/api/new", function(req, res) {
-  // var newcharacter = req.body;
-  // newcharacter.routeName = newcharacter.name.replace(/\s+/g, "").toLowerCase();
+module.exports = function(app) {
+	app.get("/api/friends", function(req, res) {
+	  res.json(friendsData);
+	});
 
-  // console.log(newcharacter);
+	app.post("/api/friends", function(req, res) {
+	  var newFriend = req.body;
 
-  // characters.push(newcharacter);
+	  console.log(newFriend);
+	  console.log(newFriend.scores);
 
-  // res.json(newcharacter);
-});
+	  friendsData.push(newFriend);
+
+	  res.json(newFriend);
+	});
+
+}
